@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://sourcebeauty.com/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  pkce: S256
+  notes: >-
+    Storefront customer authentication is delegated to the Shopify Customer Account
+    authorization server (issuer https://shopify.com/authentication/68449239327),
+    discoverable at /.well-known/openid-configuration and /.well-known/oauth-authorization-server.
+    This is the customer/agent identity layer; the store itself publishes no separate
+    first-party developer API.
+schemes:
+- name: ShopifyCustomerAccount
+  type: openIdConnect
+  issuer: https://shopify.com/authentication/68449239327
+  authorization_endpoint: https://shopify.com/authentication/68449239327/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/68449239327/oauth/token
+  jwks_uri: https://shopify.com/authentication/68449239327/.well-known/jwks.json
+  end_session_endpoint: https://shopify.com/authentication/68449239327/logout
+  response_types_supported: [code]
+  grant_types_supported: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+  token_endpoint_auth_methods_supported: [client_secret_basic]
+  id_token_signing_alg_values_supported: [RS256]
+  code_challenge_methods_supported: [S256]
+  scopes_supported: [openid, email, customer-account-api:full, customer-account-mcp-api:full]

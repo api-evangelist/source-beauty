@@ -1,7 +1,25 @@
 aid: source-beauty
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/source-beauty.png
 name: Source Beauty
-description: Source Beauty is a company surfaced as a portfolio company of 500-global and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: 'Source Beauty is an online beauty and wellbeing marketplace serving Egypt, selling skincare,
+  makeup, fragrance, hair care, body care, K-beauty and wellness/supplement products from hundreds of local
+  Egyptian and international brands. The consumer-facing storefront (sourcebeauty.com) offers curated brand
+  pages, bundles and gift sets, promotional offers, bilingual English/Arabic shopping, and free shipping on
+  qualifying orders. Source Beauty is a 500 Global portfolio company. As of this enrichment pass the company
+  operates a direct-to-consumer e-commerce website only and publishes no public developer program, API,
+  SDKs, or technical documentation.'
 url: https://raw.githubusercontent.com/api-evangelist/source-beauty/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,11 +27,25 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Beauty
+- Cosmetics
+- E-commerce
+- Retail
+- Marketplace
+- Wellness
+- Egypt
+- Skincare
+- Consumer
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +53,26 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/source-beauty-domain-security.yml
 - type: Website
-  url: https://sourcebeauty.me
+  url: https://sourcebeauty.com
+- type: SignUp
+  url: https://sourcebeauty.com/account/register
+- type: TermsOfService
+  url: https://sourcebeauty.com/policies/terms-of-service
+- type: PrivacyPolicy
+  url: https://sourcebeauty.com/policies/privacy-policy
+- type: MCPServer
+  name: Source Beauty UCP Shopping MCP
+  url: mcp/source-beauty-mcp.yml
+- type: LLMsTxt
+  url: llms/source-beauty-llms.txt
+- type: WellKnown
+  url: well-known/source-beauty-well-known.yml
+- type: Authentication
+  url: authentication/source-beauty-authentication.yml
+- type: OAuthScopes
+  url: scopes/source-beauty-scopes.yml
+- type: AgenticAccess
+  url: agentic-access/source-beauty-agentic-access.yml

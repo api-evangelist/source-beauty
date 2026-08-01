@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://sourcebeauty.com/llms.txt + https://sourcebeauty.com/.well-known/ucp
+server:
+  name: source-beauty-ucp-shopping
+  protocol: Universal Commerce Protocol (UCP)
+  transport: http
+  url: https://sourcebeauty.com/api/ucp/mcp
+  canonical_url: https://source-beauty-store.myshopify.com/api/ucp/mcp
+  openrpc_schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  spec: https://ucp.dev/2026-04-08/specification/overview/
+  supported_versions:
+  - '2026-04-08'
+  - '2026-01-23'
+  notes: >-
+    Live UCP shopping MCP endpoint served by the Shopify platform for this store. A
+    tools/list probe without an agent profile URI returns JSON-RPC error -32001
+    (invalid_profile_url) — the endpoint requires an agent profile handshake before
+    listing tools, confirming it is a gated, published server (not a candidate).
+    Checkout completion requires contemporaneous human buyer approval (published rule).
+capabilities:
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.order
+tools:
+# Tool names documented in the store's published llms.txt "Typical Agent Flow".
+- name: search_catalog
+  description: Find products matching the buyer's intent (UCP catalog.search).
+- name: create_cart
+  description: Create a cart and add desired items (UCP cart).
+- name: create_checkout
+  description: Start the purchase flow (UCP checkout).
+- name: update_checkout
+  description: Set shipping address and method (UCP fulfillment).
+- name: complete_checkout
+  description: Finalize the purchase — buyer must explicitly approve payment (UCP checkout).

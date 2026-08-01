@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://sourcebeauty.com/llms.txt + https://sourcebeauty.com/.well-known/ucp
+audience: null
+summary:
+  surface: Universal Commerce Protocol (UCP) shopping MCP + Shop skill
+  mcp_endpoint: https://sourcebeauty.com/api/ucp/mcp
+  human_in_the_loop_required: true
+  notes: >-
+    Source Beauty publishes explicit agent-access guidance (/llms.txt, mirrored at
+    /agents.md). Two sanctioned agent paths: (1) the store's own UCP shopping MCP
+    endpoint, (2) the cross-store Shop skill (https://shop.app/SKILL.md) routing
+    payment through Shop Pay. Published invariant: checkout MUST NOT complete payment
+    without contemporaneous, explicit buyer approval; agents must back off on HTTP 429.
+operations:
+- tool: search_catalog
+  action_class: read
+  consequence: read
+  human_in_the_loop: false
+- tool: create_cart
+  action_class: write
+  consequence: write
+  human_in_the_loop: false
+- tool: create_checkout
+  action_class: acting
+  consequence: write
+  human_in_the_loop: false
+- tool: update_checkout
+  action_class: acting
+  consequence: write
+  human_in_the_loop: false
+- tool: complete_checkout
+  action_class: acting
+  consequence: physical
+  human_in_the_loop: required
+  rule: Buyer must explicitly approve payment at the moment of completion (published UCP rule).
